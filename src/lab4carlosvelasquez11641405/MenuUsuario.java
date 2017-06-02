@@ -6,6 +6,8 @@
 package lab4carlosvelasquez11641405;
 
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -72,7 +74,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtProductos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btAgregarCliente = new javax.swing.JButton();
         btEliminarCliente = new javax.swing.JButton();
@@ -85,6 +87,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+
+        jdAgregarCliente.setTitle("Agregar Cliente");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Agregar Cliente");
@@ -133,6 +137,8 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jdEliminarCliente.setTitle("Eliminar Cliente");
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Eliminar Cliente");
 
@@ -165,6 +171,8 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jdAgregarProducto.setTitle("Agregar Producto");
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setText("Agregar Producto");
 
@@ -183,6 +191,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel11.setText("Descuento (En Decimales)");
 
         btapAgregar.setText("Agregar");
+        btapAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btapAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdAgregarProductoLayout = new javax.swing.GroupLayout(jdAgregarProducto.getContentPane());
         jdAgregarProducto.getContentPane().setLayout(jdAgregarProductoLayout);
@@ -235,6 +248,8 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addComponent(btapAgregar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jdModificarProducto.setTitle("Agregar Producto");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setText("Modificar Producto");
@@ -305,6 +320,8 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jdEliminarProducto.setTitle("Eliminar Producto");
+
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel19.setText("Eliminar Producto");
 
@@ -352,7 +369,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Productos"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -375,7 +392,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtProductos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -568,6 +585,10 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btEliminarClienteActionPerformed
 
     private void btAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarProductoActionPerformed
+        tfapNombre.setText("");
+        tfapCategoria.setText("");
+        tfapDescuento.setText("");
+        tfapPrecio.setText("");
         correr(jdAgregarProducto);
     }//GEN-LAST:event_btAgregarProductoActionPerformed
 
@@ -582,6 +603,13 @@ public class MenuUsuario extends javax.swing.JFrame {
     private void btGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarArchivoActionPerformed
         
     }//GEN-LAST:event_btGuardarArchivoActionPerformed
+
+    private void btapAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btapAgregarActionPerformed
+        Main.productos.add(new Producto(tfapNombre.getText(), tfapCategoria.getText(), Float.parseFloat(tfapPrecio.getText()), Float.parseFloat(tfapDescuento.getText())));
+        JOptionPane.showMessageDialog(jdAgregarProducto, "Producto agregado exitosamente");
+        jdAgregarProducto.dispose();
+        refrescarTabla();
+    }//GEN-LAST:event_btapAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -613,7 +641,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUsuario().setVisible(true);
+                MenuUsuario w = new MenuUsuario();
+                w.setLocationRelativeTo(null);
+                w.setVisible(true);
             }
         });
     }
@@ -659,13 +689,13 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JDialog jdAgregarCliente;
     private javax.swing.JDialog jdAgregarProducto;
     private javax.swing.JDialog jdEliminarCliente;
     private javax.swing.JDialog jdEliminarProducto;
     private javax.swing.JDialog jdModificarProducto;
     private javax.swing.JSpinner jsacEdad;
+    private javax.swing.JTable jtProductos;
     private javax.swing.JTextField tfacNombre;
     private javax.swing.JTextField tfapCategoria;
     private javax.swing.JTextField tfapDescuento;
@@ -682,5 +712,19 @@ public class MenuUsuario extends javax.swing.JFrame {
         jd.setLocationRelativeTo(null);
         jd.setModal(true);
         jd.setVisible(true);
+    }
+
+    private void refrescarTabla() {
+        DefaultTableModel m = (DefaultTableModel) jtProductos.getModel();
+        
+        while (m.getRowCount() > 0){
+            m.removeRow(0);
+        }
+        
+        for (Producto p : Main.productos) {
+            m.addRow(new Object[]{p.getNombre(), p.getCategoria(), p.getPrecio(), p.getDescuento()});
+        }
+        
+        jtProductos.setModel(m);
     }
 }
