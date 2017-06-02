@@ -1,0 +1,14 @@
+SUPERMERCADO BITS AND BYTES
+-    -   -   -   -   -   -   -   -   -
+Nombre del Cliente: i
+Edad del Cliente: 0
+
+
+Productos comprados:
+ | Nombre | Categoría | Precio | Descuento |
+
+ | uhijo | hijio | 89.0 | 879.0 | 
+
+
+Total a Pagar: -78142.0
+¡Gracias por comprar en Bits and Bytes!

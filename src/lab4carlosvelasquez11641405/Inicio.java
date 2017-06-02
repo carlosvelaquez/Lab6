@@ -5,6 +5,10 @@
  */
 package lab4carlosvelasquez11641405;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author imado
@@ -27,12 +31,51 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jdSeleccionarCliente = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        cbCliente = new javax.swing.JComboBox<>();
+        btSelCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btIngresarUsuario = new javax.swing.JButton();
         btIngresarCliente = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setText("Ingresar como Cliente");
+
+        btSelCliente.setText("Ingresar");
+        btSelCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelClienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jdSeleccionarClienteLayout = new javax.swing.GroupLayout(jdSeleccionarCliente.getContentPane());
+        jdSeleccionarCliente.getContentPane().setLayout(jdSeleccionarClienteLayout);
+        jdSeleccionarClienteLayout.setHorizontalGroup(
+            jdSeleccionarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdSeleccionarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdSeleccionarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btSelCliente)
+                    .addGroup(jdSeleccionarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jdSeleccionarClienteLayout.setVerticalGroup(
+            jdSeleccionarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdSeleccionarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btSelCliente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingresar");
@@ -81,6 +124,11 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         jButton3.setText("Salir del Sistema");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,14 +161,36 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btIngresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarClienteActionPerformed
-        this.dispose();
-        MenuCliente.main(new String[1]);
+        if (Main.clientes.size() > 0) {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            
+            for (Cliente c : Main.clientes) {
+                m.addElement(c);
+            }
+            
+            cbCliente.setModel(m);
+            correr(jdSeleccionarCliente);
+        }else{
+            JOptionPane.showMessageDialog(this, "No existen clientes registrados", "Error", 0);
+        }
+        
     }//GEN-LAST:event_btIngresarClienteActionPerformed
 
     private void btIngresarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarUsuarioActionPerformed
         this.dispose();
         MenuUsuario.main(new String[1]);
     }//GEN-LAST:event_btIngresarUsuarioActionPerformed
+
+    private void btSelClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelClienteActionPerformed
+        Main.clienteActual = (Cliente) cbCliente.getSelectedItem();
+        jdSeleccionarCliente.dispose();
+        this.dispose();
+        MenuCliente.main(new String[1]);
+    }//GEN-LAST:event_btSelClienteActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,9 +232,21 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btIngresarCliente;
     private javax.swing.JButton btIngresarUsuario;
+    private javax.swing.JButton btSelCliente;
+    private javax.swing.JComboBox<String> cbCliente;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JDialog jdSeleccionarCliente;
     // End of variables declaration//GEN-END:variables
+
+    private void correr(JDialog jd) {
+        jd.pack();
+        jd.setLocationRelativeTo(null);
+        jd.setModal(true);
+        jd.setVisible(true);
+    }
+
 }

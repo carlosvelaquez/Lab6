@@ -5,6 +5,7 @@
  */
 package lab4carlosvelasquez11641405;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +22,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     public MenuUsuario() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,7 +68,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         btmpModificar = new javax.swing.JButton();
         jdEliminarProducto = new javax.swing.JDialog();
         jLabel19 = new javax.swing.JLabel();
-        cmepProducto = new javax.swing.JComboBox<>();
+        cbepProducto = new javax.swing.JComboBox<>();
         btepEliminar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -85,8 +86,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         btCargarArchivo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        lbGanancias = new javax.swing.JLabel();
 
         jdAgregarCliente.setTitle("Agregar Cliente");
 
@@ -98,6 +98,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel5.setText("Edad");
 
         btacAgregar.setText("Agregar");
+        btacAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btacAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdAgregarClienteLayout = new javax.swing.GroupLayout(jdAgregarCliente.getContentPane());
         jdAgregarCliente.getContentPane().setLayout(jdAgregarClienteLayout);
@@ -143,6 +148,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel6.setText("Eliminar Cliente");
 
         btecEliminar.setText("Eliminar Cliente");
+        btecEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btecEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdEliminarClienteLayout = new javax.swing.GroupLayout(jdEliminarCliente.getContentPane());
         jdEliminarCliente.getContentPane().setLayout(jdEliminarClienteLayout);
@@ -263,6 +273,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel18.setText("Descuento (En Decimales)");
 
         btmpModificar.setText("Modificar");
+        btmpModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btmpModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdModificarProductoLayout = new javax.swing.GroupLayout(jdModificarProducto.getContentPane());
         jdModificarProducto.getContentPane().setLayout(jdModificarProductoLayout);
@@ -325,13 +340,18 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel19.setText("Eliminar Producto");
 
-        cmepProducto.addActionListener(new java.awt.event.ActionListener() {
+        cbepProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmepProductoActionPerformed(evt);
+                cbepProductoActionPerformed(evt);
             }
         });
 
         btepEliminar.setText("Eliminar");
+        btepEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btepEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdEliminarProductoLayout = new javax.swing.GroupLayout(jdEliminarProducto.getContentPane());
         jdEliminarProducto.getContentPane().setLayout(jdEliminarProductoLayout);
@@ -343,7 +363,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                     .addComponent(btepEliminar)
                     .addGroup(jdEliminarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel19)
-                        .addComponent(cmepProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbepProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jdEliminarProductoLayout.setVerticalGroup(
@@ -352,7 +372,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmepProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbepProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btepEliminar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -363,6 +383,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel17.setText("jLabel17");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Menú de Usuario");
@@ -450,6 +475,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         });
 
         btCargarArchivo.setText("Cargar Archivo de Productos");
+        btCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCargarArchivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -492,18 +522,16 @@ public class MenuUsuario extends javax.swing.JFrame {
         );
 
         jButton1.setText("Cerrar Sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Estadísticas"));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Ganancia Total: ");
-
-        jButton2.setText("Refrescar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        lbGanancias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbGanancias.setText("Ganancia Total: ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -511,19 +539,15 @@ public class MenuUsuario extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addComponent(lbGanancias)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addComponent(lbGanancias)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -564,24 +588,34 @@ public class MenuUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void tfapNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfapNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfapNombreActionPerformed
 
-    private void cmepProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmepProductoActionPerformed
+    private void cbepProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbepProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmepProductoActionPerformed
+    }//GEN-LAST:event_cbepProductoActionPerformed
 
     private void btAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarClienteActionPerformed
         correr(jdAgregarCliente);
     }//GEN-LAST:event_btAgregarClienteActionPerformed
 
     private void btEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarClienteActionPerformed
-        correr(jdEliminarCliente);
+        if (Main.clientes.size() > 0) {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+        
+            for (Cliente c : Main.clientes) {
+                m.addElement(c);
+            }
+
+            cbecCliente.setModel(m);
+
+            correr(jdEliminarCliente);
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay clientes en el registro", "Error", 0);
+        }
+        
+        
     }//GEN-LAST:event_btEliminarClienteActionPerformed
 
     private void btAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarProductoActionPerformed
@@ -593,15 +627,39 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btAgregarProductoActionPerformed
 
     private void btModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarProductoActionPerformed
-        correr(jdModificarProducto);
+        if (Main.productos.size() > 0) {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+        
+            for (Producto p : Main.productos) {
+                m.addElement(p);
+            }
+
+            cbmpProducto.setModel(m);
+            correr(jdModificarProducto);
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay productos en el registro", "Error", 0);
+        }
     }//GEN-LAST:event_btModificarProductoActionPerformed
 
     private void btEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarProductoActionPerformed
-        correr(jdEliminarProducto);
+        if (Main.productos.size() > 0) {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+        
+            for (Producto p : Main.productos) {
+                m.addElement(p);
+            }
+
+            cbepProducto.setModel(m);
+            correr(jdEliminarProducto);
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay productos en el registro", "Error", 0);
+        }
+        
     }//GEN-LAST:event_btEliminarProductoActionPerformed
 
     private void btGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarArchivoActionPerformed
-        
+        Main.escribirArchivo();
+        JOptionPane.showMessageDialog(this, "Archivo escrito exitosamente");
     }//GEN-LAST:event_btGuardarArchivoActionPerformed
 
     private void btapAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btapAgregarActionPerformed
@@ -610,6 +668,57 @@ public class MenuUsuario extends javax.swing.JFrame {
         jdAgregarProducto.dispose();
         refrescarTabla();
     }//GEN-LAST:event_btapAgregarActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        refrescarTabla();
+    }//GEN-LAST:event_formFocusGained
+
+    private void btCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCargarArchivoActionPerformed
+        Main.leerArchivo();
+        refrescarTabla();
+        JOptionPane.showMessageDialog(this, "Archivo cargado exitosamente");
+    }//GEN-LAST:event_btCargarArchivoActionPerformed
+
+    private void btepEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btepEliminarActionPerformed
+        Producto p = (Producto) cbepProducto.getSelectedItem();
+        Main.productos.remove(p);
+        JOptionPane.showMessageDialog(jdEliminarProducto, "Producto eliminado exitosamente");
+        jdEliminarProducto.dispose();
+        refrescarTabla();
+    }//GEN-LAST:event_btepEliminarActionPerformed
+
+    private void btacAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btacAgregarActionPerformed
+        Main.clientes.add(new Cliente(tfacNombre.getText(), (int) jsacEdad.getValue()));
+        JOptionPane.showMessageDialog(jdAgregarCliente, "Cliente agregado exitosamente");
+        jdAgregarCliente.dispose();
+    }//GEN-LAST:event_btacAgregarActionPerformed
+
+    private void btecEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btecEliminarActionPerformed
+        Cliente c = (Cliente) cbecCliente.getSelectedItem();
+        
+        Main.clientes.remove(c);
+        JOptionPane.showMessageDialog(jdEliminarCliente, "Cliente eliminado exitosamente");
+        jdEliminarCliente.dispose();
+    }//GEN-LAST:event_btecEliminarActionPerformed
+
+    private void btmpModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmpModificarActionPerformed
+        Producto p = (Producto) cbmpProducto.getSelectedItem();
+        
+        p.setNombre(tfmpNombre.getText());
+        p.setCategoria(tfmpCategoria.getText());
+        p.setPrecio(Float.parseFloat(tfmpPrecio.getText()));
+        p.setDescuento(Float.parseFloat(tfmpDescuento.getText()));
+        
+        JOptionPane.showMessageDialog(jdModificarProducto, "Producto Modificado Exitosamente");
+        refrescarTabla();
+        jdModificarProducto.dispose();
+        
+    }//GEN-LAST:event_btmpModificarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        Inicio.main(new String[1]);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -662,11 +771,9 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btepEliminar;
     private javax.swing.JButton btmpModificar;
     private javax.swing.JComboBox<String> cbecCliente;
+    private javax.swing.JComboBox<String> cbepProducto;
     private javax.swing.JComboBox<String> cbmpProducto;
-    private javax.swing.JComboBox<String> cmepProducto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -696,6 +803,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JDialog jdModificarProducto;
     private javax.swing.JSpinner jsacEdad;
     private javax.swing.JTable jtProductos;
+    private javax.swing.JLabel lbGanancias;
     private javax.swing.JTextField tfacNombre;
     private javax.swing.JTextField tfapCategoria;
     private javax.swing.JTextField tfapDescuento;
@@ -714,7 +822,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jd.setVisible(true);
     }
 
-    private void refrescarTabla() {
+    public void refrescarTabla() {
         DefaultTableModel m = (DefaultTableModel) jtProductos.getModel();
         
         while (m.getRowCount() > 0){
@@ -726,5 +834,6 @@ public class MenuUsuario extends javax.swing.JFrame {
         }
         
         jtProductos.setModel(m);
+        lbGanancias.setText("Ganancia Total: " + Main.ganancias);
     }
 }

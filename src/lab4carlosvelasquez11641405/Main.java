@@ -15,10 +15,17 @@ public class Main {
     static File a = new File(path);
     static ArrayList<Producto> productos = new ArrayList();
     static ArrayList<Cliente> clientes = new ArrayList();
+    static Cliente clienteActual;
+    static float ganancias;
 
     public static void main(String[] args) {
-        float ganancias = 0;
-        Inicio.main(args);
+        try {
+            ganancias = 0;
+            Inicio.main(args);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Un error ha ocurrido" , "Error", 0);
+        }
+        
     }
     
     public static void escribirArchivo(){
@@ -43,6 +50,7 @@ public class Main {
    
     public static void leerArchivo(){
         try {
+            productos = new ArrayList();
             Scanner sc = new Scanner(a);
             sc.useDelimiter(";");
             
