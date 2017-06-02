@@ -1,0 +1,14 @@
+SUPERMERCADO BITS AND BYTES
+-    -   -   -   -   -   -   -   -   -
+Nombre del Cliente: k
+Edad del Cliente: 0
+
+
+Productos comprados:
+ | Nombre | Categoría | Precio | Descuento |
+
+ | njk | uijok | 98.0 | 89.0 | 
+
+
+Total a Pagar: -8624.0
+¡Gracias por comprar en Bits and Bytes!

@@ -87,6 +87,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lbGanancias = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jdAgregarCliente.setTitle("Agregar Cliente");
 
@@ -533,6 +534,13 @@ public class MenuUsuario extends javax.swing.JFrame {
         lbGanancias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbGanancias.setText("Ganancia Total: ");
 
+        jButton2.setText("Recargar Tabla y Ganancias");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -540,14 +548,18 @@ public class MenuUsuario extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbGanancias)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(lbGanancias)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbGanancias)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -691,6 +703,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         Main.clientes.add(new Cliente(tfacNombre.getText(), (int) jsacEdad.getValue()));
         JOptionPane.showMessageDialog(jdAgregarCliente, "Cliente agregado exitosamente");
         jdAgregarCliente.dispose();
+        refrescarTabla();
     }//GEN-LAST:event_btacAgregarActionPerformed
 
     private void btecEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btecEliminarActionPerformed
@@ -699,6 +712,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         Main.clientes.remove(c);
         JOptionPane.showMessageDialog(jdEliminarCliente, "Cliente eliminado exitosamente");
         jdEliminarCliente.dispose();
+        refrescarTabla();
     }//GEN-LAST:event_btecEliminarActionPerformed
 
     private void btmpModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmpModificarActionPerformed
@@ -719,6 +733,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.dispose();
         Inicio.main(new String[1]);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        refrescarTabla();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -774,6 +792,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbepProducto;
     private javax.swing.JComboBox<String> cbmpProducto;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
