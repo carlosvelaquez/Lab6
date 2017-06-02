@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author imado
  */
 public class MenuUsuario extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form MenuUsuario
@@ -675,9 +676,13 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btGuardarArchivoActionPerformed
 
     private void btapAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btapAgregarActionPerformed
-        Main.productos.add(new Producto(tfapNombre.getText(), tfapCategoria.getText(), Float.parseFloat(tfapPrecio.getText()), Float.parseFloat(tfapDescuento.getText())));
-        JOptionPane.showMessageDialog(jdAgregarProducto, "Producto agregado exitosamente");
-        jdAgregarProducto.dispose();
+        try {
+            Main.productos.add(new Producto(tfapNombre.getText(), tfapCategoria.getText(), Float.parseFloat(tfapPrecio.getText()), Float.parseFloat(tfapDescuento.getText())));
+            JOptionPane.showMessageDialog(jdAgregarProducto, "Producto agregado exitosamente");
+            jdAgregarProducto.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error", "Error", 0);
+        }
         refrescarTabla();
     }//GEN-LAST:event_btapAgregarActionPerformed
 
@@ -700,9 +705,15 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btepEliminarActionPerformed
 
     private void btacAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btacAgregarActionPerformed
-        Main.clientes.add(new Cliente(tfacNombre.getText(), (int) jsacEdad.getValue()));
-        JOptionPane.showMessageDialog(jdAgregarCliente, "Cliente agregado exitosamente");
-        jdAgregarCliente.dispose();
+        
+        
+        try {
+            Main.clientes.add(new Cliente(tfacNombre.getText(), (int) jsacEdad.getValue()));
+            JOptionPane.showMessageDialog(jdAgregarCliente, "Cliente agregado exitosamente");
+            jdAgregarCliente.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error", "Error", 0);
+        }
         refrescarTabla();
     }//GEN-LAST:event_btacAgregarActionPerformed
 
@@ -716,16 +727,25 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btecEliminarActionPerformed
 
     private void btmpModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmpModificarActionPerformed
-        Producto p = (Producto) cbmpProducto.getSelectedItem();
         
-        p.setNombre(tfmpNombre.getText());
-        p.setCategoria(tfmpCategoria.getText());
-        p.setPrecio(Float.parseFloat(tfmpPrecio.getText()));
-        p.setDescuento(Float.parseFloat(tfmpDescuento.getText()));
         
-        JOptionPane.showMessageDialog(jdModificarProducto, "Producto Modificado Exitosamente");
+        try {
+            Producto p = (Producto) cbmpProducto.getSelectedItem();
+        
+            p.setNombre(tfmpNombre.getText());
+            p.setCategoria(tfmpCategoria.getText());
+            p.setPrecio(Float.parseFloat(tfmpPrecio.getText()));
+            p.setDescuento(Float.parseFloat(tfmpDescuento.getText()));
+
+            JOptionPane.showMessageDialog(jdModificarProducto, "Producto Modificado Exitosamente");
+            
+            jdModificarProducto.dispose();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error", "Error", 0);
+        }
         refrescarTabla();
-        jdModificarProducto.dispose();
+        
         
     }//GEN-LAST:event_btmpModificarActionPerformed
 
